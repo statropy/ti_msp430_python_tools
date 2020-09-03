@@ -151,7 +151,8 @@ elif sys.platform == 'darwin':
         def open(self, device=None):
             if device is None:
                 try:
-                    self.hid_device = hid.device(0x2047, 0x200)
+                    self.hid_device = hid.device()
+                    self.hid_device.open(0x2047, 0x200)
                  
                 except IndexError:
                     raise ValueError('USB VID:PID 2047:0200 not found (not in BSL mode? or try --device)')
